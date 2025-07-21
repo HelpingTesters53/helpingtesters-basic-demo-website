@@ -1,62 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Automation Practice Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demo Login Page</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    .container { max-width: 500px; margin: auto; }
-    input, select, button, textarea {
-      width: 100%; padding: 10px; margin: 10px 0;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    .success { color: green; display: none; }
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-container h2 {
+      text-align: center;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .hint {
+      font-size: 12px;
+      color: gray;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2 id="form-title">Login Form</h2>
 
-    <form id="loginForm" data-testid="login-form">
-      <input type="text" id="username" name="username" placeholder="Username" data-testid="username-input" required>
-      <input type="password" id="password" name="password" placeholder="Password" data-testid="password-input" required>
-      
-      <select id="role" name="role" data-testid="role-select">
-        <option value="admin">Admin</option>
-        <option value="tester">Tester</option>
-        <option value="developer">Developer</option>
-      </select>
+  <div class="login-container">
+    <h2>Login</h2>
 
-      <label><input type="checkbox" id="remember" data-testid="remember-checkbox"> Remember Me</label>
+    <div class="hint">Hint: Username is <strong>admin</strong></div>
+    <input type="text" placeholder="Enter username" name="username" id="username" />
 
-      <button type="submit" id="loginBtn" data-testid="login-button">Login</button>
-    </form>
+    <div class="hint">Hint: Password is <strong>password123</strong></div>
+    <input type="password" placeholder="Enter password" name="password" id="password" />
 
-    <p class="success" id="loginSuccess" data-testid="success-message">🎉 Login Successful!</p>
-
-    <hr>
-
-    <h3>Contact Us</h3>
-    <textarea id="messageBox" rows="4" placeholder="Type your message..." data-testid="message-box"></textarea>
-    <button id="sendMsg" data-testid="send-button">Send Message</button>
-
-    <p id="msgStatus" data-testid="message-status" style="display:none; color:blue;">📨 Message sent!</p>
+    <button onclick="login()">Login</button>
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    function login() {
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
-      if (user === "admin" && pass === "admin") {
-        document.getElementById("loginSuccess").style.display = "block";
+      
+      if (user === "admin" && pass === "password123") {
+        alert("Login successful!");
       } else {
-        alert("Invalid credentials");
+        alert("Invalid credentials!");
       }
-    });
-
-    document.getElementById("sendMsg").addEventListener("click", function() {
-      document.getElementById("msgStatus").style.display = "block";
-    });
+    }
   </script>
+
 </body>
 </html>
