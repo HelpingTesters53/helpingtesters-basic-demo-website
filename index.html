@@ -1,28 +1,27 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Demo Login Page</title>
+  <title>Login</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background: #f4f4f4;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
     .login-container {
-      background: white;
+      background: #fff;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 300px;
     }
-    .login-container h2 {
-      text-align: center;
-    }
+    .login-container h2 { text-align: center; }
     input[type="text"], input[type="password"] {
       width: 100%;
       padding: 10px;
@@ -54,25 +53,23 @@
 
   <div class="login-container">
     <h2>Login</h2>
-
-    <div class="hint">Hint: Username is <strong>admin</strong></div>
-    <input type="text" placeholder="Enter username" name="username" id="username" />
-
-    <div class="hint">Hint: Password is <strong>password123</strong></div>
-    <input type="password" placeholder="Enter password" name="password" id="password" />
-
+    <div class="hint">Username: <strong>admin</strong></div>
+    <input type="text" placeholder="Enter username" id="username" />
+    
+    <div class="hint">Password: <strong>password123</strong></div>
+    <input type="password" placeholder="Enter password" id="password" />
+    
     <button onclick="login()">Login</button>
   </div>
 
   <script>
     function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      
-      if (user === "admin" && pass === "password123") {
-        alert("Login successful!");
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if (username === "admin" && password === "password123") {
+        window.location.href = "dashboard.html";
       } else {
-        alert("Invalid credentials!");
+        alert("Invalid credentials. Try again.");
       }
     }
   </script>
